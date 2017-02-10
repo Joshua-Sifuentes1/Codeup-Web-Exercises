@@ -1,0 +1,27 @@
+# Big Picture
+	servers serve requests
+	requests happen when human clicks a links/submit a form in a browser
+
+# Mac OS X
+	file system
+	Chrome or any browser
+	sublime Text
+	~/vagrant-lamp/sites/codeup.dev
+	~/vagrant-lamp/
+	ansible
+	sequel pro
+
+# vagrant VM
+	virtualized Ubuntu linux install
+	web server (NGINX)
+	MySQL database
+	server logs
+	PHP - our server side programmin language
+	/vagrant/sites/codeup.dev
+	composer
+	artisan
+
+	navigate the browser to http://codeup.dev/hello_world.html
+	sending a request to that address for that resource
+	server listens for requests to that hostss
+	server figures our what to do
