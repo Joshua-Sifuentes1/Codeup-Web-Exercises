@@ -7,17 +7,17 @@
 
 		<h1 id="main-title">Learning JQuery!</h1>
 
-		<h2 class="paragraphs" id="secondary-title" >ID Selectors</h2>
+		<h2 class="codeup" id="secondary-title" >ID Selectors</h2>
 
-			<p class="paragraphs" id="paragraph">
+			<p class="codeup" id="paragraph">
 				Ipsum Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit autem iure nihil. Veniam dignissimos, non molestias, atque eaque accusantium animi minima cupiditate quia pariatur eos enim ducimus tenetur fuga ab.
 			</p>
-			<p class="paragraphs" id="paragraph2">
+			<p class="" id="paragraph2">
 				Random paragraph
 			</p>
 
 			
-			<ul class="list" id="random-list">
+			<ul class="list" id="codeup">
 				<li>Stuff</li>
 				<li>Random</li>
 				<li>Hello</li>
@@ -41,11 +41,10 @@
 			<script>
 				$(document).ready(function () {
 
-					var title = $('#main-title').html();
-					var paragraph = $('#paragraph').html();
+					var codeup = $('.codeup');
 
-					alert(paragraph);
-
+					codeup.css('border', '1px solid red');
+					codeup.css('background-color', 'yellow');
 				});
 			</script>
 			<!-- Scripts -->
