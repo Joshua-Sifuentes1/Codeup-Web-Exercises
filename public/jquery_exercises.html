@@ -7,6 +7,8 @@
 
 		<h1 id="main-title">Learning JQuery!</h1>
 
+		<h3 id="btn-title">Click Me!</h3>
+
 		<h2 class="codeup" id="secondary-title" >ID Selectors</h2>
 
 			<p class="codeup" id="paragraph">
@@ -40,11 +42,26 @@
 
 			<script>
 				$(document).ready(function () {
-					var list = $('li');
 
-					$('h1, p, ul').css('background-color', 'yellow');
+					//anons function on the fly. This will typically only be run once. 
+					$('#btn-title').click(function(){
+
+						$('p').css('color', 'red');
 					
-					alert($('h1').html());
+					});
+					// anons function in steps, needs to be a reason to do this.
+					var fn = function(){
+						alert("the btn works! Double click!");
+					}
+
+					$('#btn-title').dblclick(fn);
+
+					$('#main-title').hover(function(){
+
+						$(this).css('color', 'blue');
+
+					});
+
 				});
 			</script>
 			<!-- Scripts -->
