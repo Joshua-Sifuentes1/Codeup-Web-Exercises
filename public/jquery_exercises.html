@@ -7,8 +7,6 @@
 
 		<h1 id="main-title">Learning JQuery!</h1>
 
-		<h3 id="btn-title">Click Me!</h3>
-
 		<h2 class="codeup" id="secondary-title" >ID Selectors</h2>
 
 			<p class="codeup" id="paragraph">
@@ -18,14 +16,14 @@
 				Random paragraph
 			</p>
 
-			
-			<ul class="list" id="codeup">
-				<li>Stuff</li>
-				<li>Random</li>
-				<li>Hello</li>
-				<li>Code Up</li>
-			</ul>
-
+			<div id="div-list">
+				<ul class="list" id="codeup">
+					<li>Stuff</li>
+					<li>Random</li>
+					<li>Hello</li>
+					<li>Code Up</li>
+				</ul>
+			</div>
 			<div class="box">
 			</div>
 
@@ -43,26 +41,31 @@
 			<script>
 				$(document).ready(function () {
 
-					//anons function on the fly. This will typically only be run once. 
-					$('#btn-title').click(function(){
+					$('li').hover(
+						//hover on
+						function () {
+							$(this).css('color', 'red');
+						},
+						//hover off
+						function () {
+							$(this).css('color', 'black');
+						}
+					);
 
-						$('p').css('color', 'red');
-					
+					$('#main-title').click(function (){
+
+						$(this).css('background-color', 'red');
 					});
-					// anons function in steps, needs to be a reason to do this.
-					var fn = function(){
-						alert("the btn works! Double click!");
-					}
+					//using this and p is different. When 'this' is used
+					//the function will work individually on each p tag or if 
+					//'p' is used it will be applied to all p tags at the same time.
+					$('p').dblclick(function (){
 
-					$('#btn-title').dblclick(fn);
-
-					$('#main-title').hover(function(){
-
-						$(this).css('color', 'blue');
+						$(this).css('font-size', '18px');
 
 					});
 
-				});
+				}); //closing tag for **$(document).ready(function () {**
 			</script>
 			<!-- Scripts -->
 			<!-- Scripts -->
