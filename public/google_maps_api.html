@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style type="text/css">
+			/*Add height and width to the map style or there will be issues.*/
+			#map-canvas {
+				width: 770px;
+				height: 481px;
+			}
+
+		</style>
+	</head>
+	<body>
+		<!-- div to hold map -->
+		<div id="map-canvas"></div>
+
+		<!-- Load the Google Maps API [DON'T FORGET TO USE A KEY] -->
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcv_LJLZoNTQTPLzBeUFeMeun3DvJm0us"></script>
+
+		<!-- Script to show address on map -->
+		<script type="text/javascript">
+		(function() {
+			"use strict";
+
+			var latitude = 29.4454444;
+			var longitude = -98.67950139999999;
+
+			var address = "10106 TX-151, San Antonio, TX 78251";
+
+			var geocoder = new google.maps.Geocoder();
+
+			geocoder.geocode({ "address": address }, function(results, status) {
+
+				// Check for a successful result
+				if (status == google.maps.GeocoderStatus.OK) {
+
+				// Recenter the map over the address
+				map.setCenter(results[0].geometry.location);
+				
+				} else {
+
+				   // Show an error message with the status if our request fails
+				   alert("Geocoding was not successful - STATUS: " + status);
+			   }
+			});
+
+			var mapOptions = {
+				// Set the zoom level
+				zoom: 15,
+
+				// This sets the center of the map at our location
+				center: {
+					lat:  latitude,
+					lng: longitude
+				},
+
+				// Show this map in satellite view
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			}
+
+			// Render the map
+			// var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+			// var bigz = { lat: latitude, lng: longitude };
+
+			// Add the marker to our existing map
+			// var marker = new google.maps.Marker({
+			// 	position: bigz,
+			// 	map: map
+			// });
+
+			// // Create a new infoWindow object with content
+			// var infowindow = new google.maps.InfoWindow({
+			// 	content: "Big'z Burger Joint! Amazing Burgers!"
+
+			// });
+
+			// Open the window using our map and marker
+			// infowindow.open(map, marker);
+
+			function initMap() {
+			var map = new google.maps.Map(document.getElementById('map'), {
+			zoom: 15,
+			center: {lat: latitude, lng: longitude}
+			});
+
+			var marker;
+
+			marker = new google.maps.Marker({
+				map: map,
+				draggable: true,
+				animation: google.maps.Animation.DROP,
+				position: {lat: latitude, lng: longitude}
+			});
+		
+			marker.addListener('click', toggleBounce);
+			}
+
+			function toggleBounce() {
+			if (marker.getAnimation() !== null) {
+				marker.setAnimation(null);
+			} else {
+				marker.setAnimation(google.maps.Animation.BOUNCE);
+				}
+			}
+
+		})();
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JQuery</title>
+	</head>
+	<body>
+
+		<h1 id="main-title">Learning JQuery!</h1>
+
+		<h2 class="paragraphs" id="secondary-title" >ID Selectors</h2>
+
+			<p class="paragraphs" id="paragraph">
+				Ipsum Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit autem iure nihil. Veniam dignissimos, non molestias, atque eaque accusantium animi minima cupiditate quia pariatur eos enim ducimus tenetur fuga ab.
+			</p>
+			<p class="paragraphs" id="paragraph2">
+				Random paragraph
+			</p>
+
+			
+			<ul class="list" id="random-list">
+				<li>Stuff</li>
+				<li>Random</li>
+				<li>Hello</li>
+				<li>Code Up</li>
+			</ul>
+
+			<div class="box">
+			</div>
+
+
+
+			<!-- Scripts -->
+			<!-- Scripts -->
+			<!-- Scripts -->
+			<script
+				src="https://code.jquery.com/jquery-2.2.4.min.js"
+				integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+				crossorigin="anonymous">	
+			</script>
+
+			<script>
+				$(document).ready(function () {
+
+					var title = $('#main-title').html();
+					var paragraph = $('#paragraph').html();
+
+					alert(paragraph);
+
+				});
+			</script>
+			<!-- Scripts -->
+			<!-- Scripts -->
+			<!-- Scripts -->
+	</body>
+</html>
