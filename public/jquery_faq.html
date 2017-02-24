@@ -43,6 +43,7 @@
 				<dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</dd>
 
 		</dl>
+		<a href="#" id="toggle">Toggle FAQ answers</a>
 		<h3>Park</h3>
 		<ul>
 			<li>Lorem ipsum dolor sit amet</li>
@@ -65,7 +66,6 @@
 			<li>Lorem ipsum dolor sit amet</li>
 		</ul>
 
-		<a href="#" id="toggle">Toggle FAQ answers</a>
 
 		<script
 			src="https://code.jquery.com/jquery-2.2.4.min.js"
@@ -79,7 +79,7 @@
 
 				$("#toggle").click(function(event){
 
-					$("dd").toggleClass("invisible");
+					$("dd").toggle();
 					console.log("dt hit");
 
 				});
@@ -91,13 +91,13 @@
 
 				$("li").click(function(event){
 					
-					$(this).parent().toggleClass("invisible");
+					$(this).parent().hide();
 
 				});
 
 				$("h3").click(function(){
 
-					$(this).next("ul").removeClass("invisible");
+					$(this).next("ul").show();
 
 				});
 				
