@@ -15,34 +15,55 @@
 		<h1>Park Facts</h1>
 
 		<dl>
-			<dt>How did the Park get its name?</dt>
-				<dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis doloribus reprehenderit inventore, voluptatem quia soluta consectetur debitis. Fugit eveniet assumenda repudiandae neque porro autem blanditiis rem nisi, illum perferendis quam?</dd>
+			<dt><h4>How did the Park get its name?</h4></dt>
+				<dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</dd>
 
-			<dt>How big is the park?</dt>
-				<dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita fuga cupiditate debitis veniam? Veniam illo quasi et, reprehenderit atque magni suscipit enim, sequi sit ab autem consectetur, nam adipisci, similique.</dd>
+			<dt><h4>How big is the park?</h4></dt>
+				<dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</dd>
 
-			<dt>Is it the most visited park?</dt>
-				<dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores ipsa, quo aperiam omnis earum sit, sint maxime minima expedita assumenda sed, aut odit illum commodi optio. Modi reprehenderit itaque suscipit!</dd>
+			<dt><h4>Is it the most visited park?</h4></dt>
+				<dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</dd>
 
-			<dt>What is the difference between a national park and a national forest?</dt>
-				<dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt laudantium tempora aspernatur. Ea quae repudiandae nobis, maxime laboriosam voluptas quisquam nulla obcaecati, laborum perferendis error fuga nesciunt doloribus veritatis repellat.</dd>
+			<dt><h4>What is the difference between a national park and a national forest?</h4></dt>
+				<dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</dd>
 
-			<dt>Can we swim in lakes or rivers?</dt>
-				<dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis incidunt laudantium, eos vel cumque nihil repudiandae provident atque quasi placeat error maxime facere dolore accusantium harum perspiciatis fugiat optio vitae.</dd>
+			<dt><h4>Can we swim in lakes or rivers?</h4></dt>
+				<dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</dd>
 
-			<dt>What is the highest peak?</dt>
-				<dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam eaque illum eligendi numquam recusandae laboriosam dolorem, laborum necessitatibus aliquid ratione esse ex ab saepe labore soluta autem doloremque! Fugiat, tempora!</dd>
+			<dt><h4>What is the highest peak?</h4></dt>
+				<dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</dd>
 
-			<dt>How many rangers work in the park?</dt>
-				<dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum quas delectus suscipit aliquid voluptatem dolorum cupiditate, nemo commodi id, porro quibusdam architecto molestias aut quis, autem quo. Id, amet, illum.</dd>
+			<dt><h4>How many rangers work in the park?</h4></dt>
+				<dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</dd>
 
-			<dt>Is there dangerous wild life?</dt>
-				<dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi tenetur aut repudiandae excepturi placeat enim beatae dolores, error perferendis neque hic at, consectetur corporis, praesentium reiciendis vitae, voluptatem tempore quis.</dd>
+			<dt><h4>Is there dangerous wild life?</h4></dt>
+				<dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</dd>
 
-			<dt>Is camping available?</dt>
-				<dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi quidem, inventore iste consectetur numquam, vitae enim officiis, provident minus reiciendis quaerat tempore. Ad veritatis nobis, dolores, magnam ratione sit labore.</dd>
+			<dt><h4>Is camping available?</h4></dt>
+				<dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</dd>
 
 		</dl>
+		<h3>Park</h3>
+		<ul>
+			<li>Lorem ipsum dolor sit amet</li>
+			<li>Lorem ipsum dolor sit amet</li>
+			<li>Lorem ipsum dolor sit amet</li>
+			<li>Lorem ipsum dolor sit amet</li>
+		</ul>
+		<h3>Park</h3>
+		<ul>
+			<li>Lorem ipsum dolor sit amet</li>
+			<li>Lorem ipsum dolor sit amet</li>
+			<li>Lorem ipsum dolor sit amet</li>
+			<li>Lorem ipsum dolor sit amet</li>
+		</ul>
+		<h3>Park</h3>
+		<ul>
+			<li>Lorem ipsum dolor sit amet</li>
+			<li>Lorem ipsum dolor sit amet</li>
+			<li>Lorem ipsum dolor sit amet</li>
+			<li>Lorem ipsum dolor sit amet</li>
+		</ul>
 
 		<a href="#" id="toggle">Toggle FAQ answers</a>
 
@@ -63,6 +84,22 @@
 
 				});
 
+				$("ul").each(function(index) {
+
+					$(this).children().first().css("font-weight", "bold");
+				});
+
+				$("li").click(function(event){
+					
+					$(this).parent().toggleClass("invisible");
+
+				});
+
+				$("h3").click(function(){
+
+					$(this).next("ul").removeClass("invisible");
+
+				});
 				
 			});
 		</script>
