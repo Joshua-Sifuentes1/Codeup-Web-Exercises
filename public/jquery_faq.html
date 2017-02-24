@@ -79,8 +79,14 @@
 
 				$("#toggle").click(function(event){
 
-					$("dd").toggle();
+					$("dd").fadeToggle();
 					console.log("dt hit");
+
+				});
+
+				$("dt").click(function(){
+
+					$(this).next("dd").fadeToggle();
 
 				});
 
