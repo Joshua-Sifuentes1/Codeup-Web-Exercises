@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Weathermap API</title>
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+		<link rel="stylesheet" href="/css/weather_map.css">
+	</head>
+	<body>
+		<main>
+			<div id="city" class="container">
+			<h2>Weather Application</h2>
+			</div>
+
+			<div id="weather-container" class="container">
+			</div>
+
+			<h4>Change location</h4>
+
+			<form>
+				
+
+				<button type="button">Submit</button>
+		
+			</form>
+		</main>
+
+
+		
+		<script
+			src="https://code.jquery.com/jquery-2.2.4.min.js"
+			integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+			crossorigin="anonymous"></script>
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+		<script>
+			$(document).ready(function(){
+
+				"use strict";
+
+				var APPID = "7f8e3aa0aad113510e0c1eaafd1c17b8";
+				var url = "http://api.openweathermap.org/data/2.5/forecast/daily"
+
+				function getWeather() {
+					$.get(url, {
+						APPID: APPID,
+						q: "San Antonio",
+						cnt: 3,
+						// lat: 30.2672,
+						// lon: 97.7431,
+						units: "imperial"
+					}).fail(function(data, status){
+						alert("Failed to load." + status);
+					}).done(function(data){
+						addWeatherInfo(data);
+						console.log(data);
+					});
+				}
+
+				function addWeatherInfo(weatherData){
+					var htmlString = "";
+
+					weatherData.list.forEach(function(data){
+						htmlString += "<div class='box col-md-4'>";
+						htmlString += "<p><h2>" + parseInt(data.temp.max) + "&deg;" + " / " + parseInt(data.temp.min) + "&deg;" + "</h2></p>";
+						htmlString += "<img src='http://openweathermap.org/img/w/" + data.weather[0].icon + ".png'>";
+						htmlString += "<p>" + "<strong>" + data.weather[0].main + ": " + "</strong>" + data.weather[0].description + "</p>";
+						htmlString += "<p>" + "<strong>Humidity:</strong> " + data.humidity + "%</p>";
+						htmlString += "<p>" + "<strong>Wind:</strong> " + data.speed + " mph</p>";
+						htmlString += "<p>" + "<strong>Pressure:</strong> " +data.pressure + " mb</p>";
+						htmlString += "</div>";
+					});
+					$("#city").append("<h3>" + weatherData.city.name + "</h3>");
+					$("#weather-container").html(htmlString);
+				}
+
+
+				getWeather();
+
+			});
+		</script>
+	</body>
+</html>
