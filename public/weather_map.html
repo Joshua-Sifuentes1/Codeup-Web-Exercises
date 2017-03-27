@@ -13,80 +13,47 @@
 		<link rel="stylesheet" href="/css/weather_map.css">
 	</head>
 	<body>
-		<main>
-			<div id="city" class="container">
-			<h2>Weather Application</h2>
-			</div>
+		<main id="page-wrap">
+			<div>
+				<div id="city" class="container">
+				<h2>Weather Application</h2>
 
-			<div id="weather-container" class="container">
-			</div>
+				<h3 id="city-header"></h3>
 
-			<h4>Change location</h4>
+				<h5>Change location</h5>
+				<p class="search-bar">	
+					<label for="city">City name:</label>
+					<input id="city-name" type="city" name="city" placeholder="Enter city name here">	
+				</p>
 
-			<form>
-				
 
-				<button type="button">Submit</button>
-		
-			</form>
+				<button id="search-button" type="button">Search</button>
+				</div>
+
+				<div id="weather-container" class="container">
+				</div>
+			</div>	
+
+			<div id="map-canvas"></div>
+			
+			
+
+			<div id="map-canvas center-block"></div>
+			
 		</main>
 
 
 		
-		<script
-			src="https://code.jquery.com/jquery-2.2.4.min.js"
-			integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-			crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+		integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+		crossorigin="anonymous"></script>
 
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 
-		<script>
-			$(document).ready(function(){
+		<script src="/js/weather_map.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ_xExYZv8xSwL7qoj7opEzvLlLK5C7go"></script>
 
-				"use strict";
-
-				var APPID = "7f8e3aa0aad113510e0c1eaafd1c17b8";
-				var url = "http://api.openweathermap.org/data/2.5/forecast/daily"
-
-				function getWeather() {
-					$.get(url, {
-						APPID: APPID,
-						q: "San Antonio",
-						cnt: 3,
-						// lat: 30.2672,
-						// lon: 97.7431,
-						units: "imperial"
-					}).fail(function(data, status){
-						alert("Failed to load." + status);
-					}).done(function(data){
-						addWeatherInfo(data);
-						console.log(data);
-					});
-				}
-
-				function addWeatherInfo(weatherData){
-					var htmlString = "";
-
-					weatherData.list.forEach(function(data){
-						htmlString += "<div class='box col-md-4'>";
-						htmlString += "<p><h2>" + parseInt(data.temp.max) + "&deg;" + " / " + parseInt(data.temp.min) + "&deg;" + "</h2></p>";
-						htmlString += "<img src='http://openweathermap.org/img/w/" + data.weather[0].icon + ".png'>";
-						htmlString += "<p>" + "<strong>" + data.weather[0].main + ": " + "</strong>" + data.weather[0].description + "</p>";
-						htmlString += "<p>" + "<strong>Humidity:</strong> " + data.humidity + "%</p>";
-						htmlString += "<p>" + "<strong>Wind:</strong> " + data.speed + " mph</p>";
-						htmlString += "<p>" + "<strong>Pressure:</strong> " +data.pressure + " mb</p>";
-						htmlString += "</div>";
-					});
-					$("#city").append("<h3>" + weatherData.city.name + "</h3>");
-					$("#weather-container").html(htmlString);
-				}
-
-
-				getWeather();
-
-			});
-		</script>
 	</body>
 </html>
