@@ -1,6 +1,8 @@
 <?php
 	session_start();
 
+	require 'functions.php';
+
 	if (isset($_SESSION['logged_in_user']) && $_SESSION['logged_in_user'] === "guest"){
 		header("Location: http://codeup.dev/authorized.php");
 		exit;
@@ -9,8 +11,8 @@
 	$message = "";
 	// check if the form was submitted
 	if(!empty($_POST)) {
-		$username = isset($_POST['username']) ? $_POST['username'] : "";
-		$password = isset($_POST['password']) ? $_POST['password'] : "";
+		$username = inputGet('username');
+		$password = inputGet('password');
 
 		if($username == "guest" && $password == "password") {
 			$_SESSION['logged_in_user'] = $username;
@@ -34,27 +36,6 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 	</head>
 	<body>
-<!-- 		<div class="container">
-	    <div class="row">
-	        <div class="col-md-offset-5 col-md-3">
-	            <div class="form-login">
-	            <h4>Welcome back.</h4>
-	            <input type="text" id="userName" class="form-control input-sm chat-input" placeholder="username" />
-	            </br>
-	            <input type="text" id="userPassword" class="form-control input-sm chat-input" placeholder="password" />
-	            </br>
-	            <div class="wrapper">
-	            <span class="group-btn">     
-	                <a href="#" class="btn btn-primary btn-md">login <i class="fa fa-sign-in"></i></a>
-	            </span>
-	            </div>
-	            </div>
-	        
-	        </div>
-	    </div>
-	</div>
- -->
-
 		<div class="container">
 			<div class="text-center">
 			<form method="POST" class="form">
