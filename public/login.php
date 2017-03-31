@@ -1,32 +1,38 @@
 <?php
-	session_start();
+session_start();
 
-	require 'functions.php';
+$sessionId = session_id();
 
-	if (isset($_SESSION['logged_in_user']) && $_SESSION['logged_in_user'] === "guest"){
-		header("Location: http://codeup.dev/authorized.php");
-		exit;
-	}
+require_once '../Input.php';
+require_once '../Auth.php';
 
+function pageController()
+{
+	$data = [];
 	$message = "";
 	// check if the form was submitted
 	if(!empty($_POST)) {
-		$username = inputGet('username');
-		$password = inputGet('password');
-
-		if($username == "guest" && $password == "password") {
-			$_SESSION['logged_in_user'] = $username;
+		$username = Input::get('username');
+		$password = Input::get('password');
+		Auth::attempt($username, $password);
+		if (Auth::check()) {
 			header("Location: http://codeup.dev/authorized.php");
 			exit;
 		} else {
-			$message = "Please retry your username or password";
+			$message = "Please retry username or password.";
 		}
 	}
-
+	$data['message'] = $message;
+	return $data;
+}
+extract(pageController());
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE-edge">
+		<meta name="viewport" content="width-device-width, initial-scale=1">
 		<title>Login PHP exercise</title>
 
 		<!-- Latest compiled and minified CSS -->
@@ -37,25 +43,23 @@
 	</head>
 	<body>
 		<div class="container">
-			<div class="text-center">
-			<form method="POST" class="form">
-				<div class="col-md-offset-5 col-xs-3">
-					<label for="username">Username:</label>
-					<input type="text" name="username" class="form-control" id="username" placeholder="username"><br>
+			<form method="POST" class="form-signin">
+				<h2 class="form-signin-heading text-center">Please sign in</h2>
+				<div class="col-xs-offset-3 col-xs-6">
+					<label for="username" class="sr-only">Username</label>
+					<input type="text" name="username" class="form-control" id="username" placeholder="Username" required="autofocus">
 				</div>
-				<div class="col-md-offset-5 col-xs-3">
-					<label for="password">Password:</label>
-					<input type="password" name="password" class="form-control" id="password" placeholder="password"><br>
+				<div class="col-xs-offset-3 col-xs-6">
+					<label for="password" class="sr-only">Password</label>
+					<input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
 				</div>
-				<div class="wrapper">
-				<span class="group-btn">
-					<input class="btn btn-default" type="submit" value="Login">
-				</span>
+				<div class="col-xs-offset-3 col-xs-6">
+					<button class="btn btn-lg btn-primary btn-block" type="submit" value="Login">Login</button>
 				</div>
 			</form>
-			<p><?= $message; ?></p>
-			</div>
+			<p><?= $message ?></p>
 		</div>
+
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="		sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	</body>
