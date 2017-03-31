@@ -1,12 +1,15 @@
 <?php  
 session_start();
 
-if (!isset($_SESSION['logged_in_user'])) {
+$sessionId = session_id();
+
+require_once '../Input.php';
+require_once '../Auth.php';
+
+if (!Auth::check()) {
 	header("Location: http://codeup.dev/login.php");
 	exit;
 }
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,13 +25,6 @@ if (!isset($_SESSION['logged_in_user'])) {
 		<h1>Authorized!</h1>
 
 		<a href="http://codeup.dev/logout.php" class="btn btn-default">Logout</a>
-
-
-
-
-
-
-
 
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="		sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
