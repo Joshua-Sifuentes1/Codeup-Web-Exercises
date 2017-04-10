@@ -8,26 +8,29 @@ class Auth
 
 	public static function attempt($username, $password)
 	{
-		if($username == "guest" && password_verify($password, self::$password)) {
+		if($username == 'guest' && password_verify($password, self::$password)) {
 			$_SESSION['logged_in_user'] = $username;
+			return true;
 			$log = new Log('cli');
 			$log->info("User " . $username . " logged in.");
 		} else {
+			return false;
 			$log = new Log('cli');
 			$log->error("User " . $username . " failed to log in!");
 		}
 	}
-
 	public static function check()
 	{
 		return isset($_SESSION['logged_in_user']);
 	}
-
 	public static function user()
 	{
-		return $_SESSION['logged_in_user'];
+		if (self::check()){
+			return $_SESSION['logged_in_user'];
+		} else {
+			return false;
+		}
 	}
-
 	public static function logout()
 	{
 		session_unset();

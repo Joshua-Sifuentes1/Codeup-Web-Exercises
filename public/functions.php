@@ -4,9 +4,7 @@
 
 function inputHas($key) {
 
-	$keyValue = isset($_REQUEST[$key]);
-
-	return $keyValue;
+	return isset($_REQUEST[$key]);
 
 }
 
@@ -14,9 +12,7 @@ function inputHas($key) {
 
 function inputGet($key){
 
-	$keyValue = (inputHas($key)) ? $_REQUEST[$key] : null;
-
-	return $keyValue;
+	return (inputHas($key)) ? $_REQUEST[$key] : null;
 
 }
 

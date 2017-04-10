@@ -1,9 +1,15 @@
 <?php  
 
-require 'functions.php';
+require_once '../input.php';
 
-$count = inputGet('count');
+function pageController()
+{
+	$data = [];
+	$data['count'] = Input::get('count');
 
+	return $data;
+}
+extract(pageController());
 ?>
 <!DOCTYPE html>
 <html>

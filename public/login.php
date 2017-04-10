@@ -9,6 +9,7 @@ require_once '../Auth.php';
 function pageController()
 {
 	$data = [];
+	
 	$message = "";
 	// check if the form was submitted
 	if(!empty($_POST)) {
